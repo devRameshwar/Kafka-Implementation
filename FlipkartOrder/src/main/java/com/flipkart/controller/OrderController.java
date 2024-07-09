@@ -1,5 +1,7 @@
 package com.flipkart.controller;
 
+import java.util.concurrent.ExecutionException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class OrderController {
 	}
 	
 	@PostMapping()
-	public ResponseEntity<Object> createOrder(@RequestBody FlipkartOrderRequest request){
+	public ResponseEntity<Object> createOrder(@RequestBody FlipkartOrderRequest request) throws InterruptedException, ExecutionException{
 		LOGGER.info("****** Request Data in Controller class: "+request);
 		return ResponseEntity.ok(service.createOrder(request));
 	}
